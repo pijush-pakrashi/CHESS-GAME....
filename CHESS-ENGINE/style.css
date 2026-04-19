@@ -1,0 +1,383 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    background-color: rgba(54, 52, 49, 0.945);
+}
+
+#gameboard {
+    width: 70vmin;
+    height: 70vmin;
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid #015501be;
+    border-radius: 2px;
+    box-sizing: border-box;
+}
+@media (max-width: 600px) {
+    #gameboard {
+        width: 80vmin;
+        height: 80vmin;
+    }
+}
+.square {
+    height: 12.5%;
+    width: 12.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.highlight {
+    position: absolute;
+    z-index: 1;
+    width: 40%; /* Adjust width as needed */
+    height: 40%; /* Adjust height as needed */
+    background-color: rgba(255, 255, 0, 0.658); /* Yellow color with opacity */
+    border-radius: 50%; /* Rounded shape */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+.piece {
+    width: 100%;
+    cursor: pointer;
+    z-index: 1;
+    background-color: null;
+    transition: transform 0.5s ease-in-out;
+}
+
+.piece img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+}
+
+.white {
+    background-color: rgb(235, 236, 208);
+}
+
+.black {
+    background-color: rgb(115, 149, 82);
+}
+
+/* #buttonContainer {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 10px 0;
+    padding: 0;
+
+} */
+
+.capturedArray {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 10px;
+
+}
+
+#whiteCaptured,
+#whiteUser {
+    flex-direction: row-reverse;
+    /* padding-top: 10px; Display pieces right to left */
+}
+
+#blackCaptured,
+#blackUser {
+    flex-direction: row;
+
+}
+
+.userDetails {
+    display: flex;
+    width: 70vmin;
+    height: auto;
+    flex-wrap: wrap;
+    margin: 0 10px;
+}
+
+.user {
+    width: 60px;
+
+    height: 60px;
+    margin: 2px;
+    filter: brightness(150%);
+    border-radius: 25%;
+
+}
+
+.capturedArray .cpiece {
+    margin: 0px -11px;
+}
+
+.cpiece {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cpiece img {
+    width: 30px;
+
+    height: auto;
+    margin: 2px 2px;
+}
+
+@media (max-width: 480px) {
+    .cpiece img {
+        width: 25px;
+        height: auto;
+        margin: 2px 2px;
+    }
+    .user {
+        width: 50px;
+        height: 50px;
+    }
+    
+    
+}
+@media (max-width: 600px) {
+    .player-in-turn {
+        font-size: 15px !important; 
+    }
+}
+
+.turn-and-pieces{
+    display: flex;
+    flex-direction: column;
+    height: 50px;
+}
+.player-in-turn{
+
+    margin: 2px 5px;
+    font-family: monospace;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+#alert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    position: fixed;
+    font-family: monospace;
+    font-size: 25px;
+    color: #ffffff;
+    text-shadow: 2px 2px 8px rgb(0, 0, 0);
+}
+
+.gamemode {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center;
+    margin-bottom: 16px;
+    width: 100%; */
+    border: none;
+    padding: 1px 32px;
+    font-family: monospace;
+    font-size: 20px;
+    color: #ffffff;
+
+}
+
+select {
+    background-color: #04be7a;
+    border: 2px solid black;
+    border-radius: 4px;
+    color: white;
+    font-family: monospace;
+}
+
+@media (min-width: 600px) {
+    .gamemode {
+        align-items: flex-start;
+        margin-right: 16px;
+        margin-bottom: 0;
+        width: auto;
+    }
+}
+
+.gamemode label,
+.gamemode select {
+    margin-bottom: 10px;
+}
+
+#getAiMove {
+    display: flex;
+    flex-direction: column;
+    /* /* margin-top: 3vh; */
+    margin-right: 6vh;
+    /* margin-bottom: 3vh;  */
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+/* Adjust the positioning of the buttonContainer to be centered below the gameboard */
+#buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 70vmin; /* Same width as the gameboard */
+    margin: 10px 0;
+    padding: 0;
+}
+
+/* Ensure the buttons stay aligned within the buttonContainer */
+/* #buttonContainer > div {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+} */
+
+button {
+    background-color: #04be7a;
+    border: 2px solid black;
+    border-radius: 4px;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 16px;
+    font-family: monospace;
+}
+
+/* @getAiMove, #newgame {
+    margin: 0;
+} */
+
+@media (max-width: 600px) {
+    #buttonContainer {
+        width: 80vmin; /* Adjusted width for smaller screens */
+    }
+    .player-in-turn {
+        font-size: 15px !important;
+    }
+}
+
+
+@media (min-width: 600px) {
+    .gameboard {
+        width: 80vmin;
+        height: 80vmin;
+    }
+}
+
+
+#promotion-overlay .piece {
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+}
+
+#promotion-overlay .queen.white {
+    background-image: url('src/pieces/queen.png');
+}
+
+#promotion-overlay .rook.white {
+    background-image: url('src/pieces/rook.png');
+}
+
+#promotion-overlay .bishop.white {
+    background-image: url('src/pieces/bishop.png');
+}
+
+#promotion-overlay .knight.white {
+    background-image: url('src/pieces/knight.png');
+}
+
+#promotion-overlay .queen.black {
+    background-image: url('src/pieces/Bqueen.png');
+}
+
+#promotion-overlay .rook.black {
+    background-image: url('src/pieces/Brook.png');
+}
+
+#promotion-overlay .bishop.black {
+    background-image: url('src/pieces/Bbishop.png');
+}
+
+#promotion-overlay .knight.black {
+    background-image: url('src/pieces/Bknight.png');
+}
+/* HTML: <div class="loader"></div> */
+/* .loader {
+    display: inline-flex;
+    gap: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+.loader:before,
+.loader:after {
+    content: "";
+    height: 20px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+      linear-gradient(#222 0 0) top/100% 40% no-repeat,
+      radial-gradient(farthest-side,#000 95%,#0000) 50%/8px 8px no-repeat
+      #fff;
+    animation: l7 1.5s infinite alternate ease-in;
+}
+@keyframes l7 {
+    0%,
+    70% {background-size:100% 40%,8px 8px}
+    85% {background-size:100% 120%,8px 8px}
+    100% {background-size:100% 40%,8px 8px}
+}
+HTML: <div class="loader"></div> */
+.loader {
+    width: 50px;
+    padding: 8px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #86b025;
+    --_m: 
+      conic-gradient(#0000 10%,#000),
+      linear-gradient(#000 0 0) content-box;
+    -webkit-mask: var(--_m);
+            mask: var(--_m);
+    -webkit-mask-composite: source-out;
+            mask-composite: subtract;
+    animation: l3 1s infinite linear;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    display: none; /* Hidden by default */
+}
+
+@keyframes l3 { 
+    0% { transform: translate(-50%, -50%) rotate(0); }
+    100% { transform: translate(-50%, -50%) rotate(1turn); }
+}
+
+.gameOver {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    color: #000000;
+    text-shadow: 0 0 5px #86b025, 0 0 10px #86b025, 0 0 15px #86b025, 0 0 20px #86b025, 0 0 25px #86b025, 0 0 30px #86b025, 0 0 35px #86b025;
+    
+    z-index: 10000; /* Make sure it appears on top */
+    display: none; /* Hidden by default */
+}
+

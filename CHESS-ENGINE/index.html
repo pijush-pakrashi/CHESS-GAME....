@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHESS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="gamemode">
+
+        <label for="gameMode">GAME MODE:</label>
+        <select id="gameMode" onchange="updateGameOptions()">
+            <option value="localMultiplayer" selected>Local Multiplayer (Default)</option>
+            <option value="stockfish">Stockfish</option>
+            <option value="myai">My AI</option>
+        </select>
+        <!-- <label for="gameDepth">Game Depth</label>
+        <select id="gameDepth" disabled> </select> -->
+    </div>
+
+    <div class="userDetails" id="blackUSer">
+        <img class = "user" src="/src/users/black-user.jpeg" alt="black-user">
+        <div class="turn-and-pieces">
+
+            <div id="player-black" class="player-in-turn">BLACK'S TURN</div>
+            <div id="blackCaptured" class="capturedArray">
+        </div>
+        
+
+        </div>
+    </div>
+    <div id="gameboard"></div>
+    <div class="userDetails" id="whiteUser">
+        <img class = "user" src="/src/users/white-user.jpg" alt="white-user">
+        <div class="turn-and-pieces">
+
+            <div id="player-white" class="player-in-turn">WHITE'S TURN</div>
+            <div id="whiteCaptured" class="capturedArray">
+            </div>
+        </div>
+    </div>
+    <div id="buttonContainer">
+
+        <div id="getAiMove"><button id="btn" type="button" onclick="getAiMove()">get help</button></div>
+        <div id="newgame"><button id="btn2" type="button" onclick="getinit()">new game </button></div>
+    </div>
+    
+    <div id="alert"></div>
+    <div id="loader" class="loader" style="display: none;"></div>
+    <div id="gameOver" class="gameOver"></div>
+
+
+
+    <script src="pices.js"></script>
+    <script src="createBoard.js"></script>
+    <script src="playsound.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
